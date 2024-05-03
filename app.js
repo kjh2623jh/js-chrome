@@ -104,35 +104,33 @@ console.log(txt);
 title.style.color = "red";
 
 function handleTitleClick() {
-    console.log("title was clicked");
-}
-
-function handleMouseEnter() {
-    title.innerText = "mouse is here";
-}
-
-function handleMouseLeave() {
-    title.innerText = "mouse is gone";
+    const currentColor = title.style.color;
+    let newColor;
+    if (currentColor === "blue") {
+        newColor = "tomato";
+    } else {
+        newColor = "blue";
+    }
+    title.style.color = newColor;
 }
 
 title.addEventListener("click", handleTitleClick);
-title.addEventListener("mouseenter", handleMouseEnter);
-title.onmouseleave = handleMouseLeave;
 
-function handleWindowResize() {
-    document.body.style.backgroundColor = "tomato";
-}
-function handleWindowCopy() {
-    alert("coopier");
-}
-function handleWindowOffline() {
-    alert("SOS no WiFi");
-}
-function handleWindowOnline() {
-    alert("ALL GOOD");
+const h1 = document.querySelector(".helloo h1");
+
+function handleH1Click() {
+    const clickClass = "clicked";
+    if (h1.classList.contains(clickClass)) {
+        h1.classList.remove(clickClass)
+    } else {
+        h1.classList.add(clickClass)
+    }
 }
 
-window.addEventListener("resize", handleWindowResize);
-window.addEventListener("copy", handleWindowCopy);
-window.addEventListener("offline", handleWindowOffline);
-window.addEventListener("online", handleWindowOnline);
+h1.addEventListener("click", handleH1Click);
+
+const coolTitle = document.querySelector(".cool");
+function handleCoolTitleClick() {
+    coolTitle.classList.toggle("clicked")
+}
+coolTitle.addEventListener("click", handleCoolTitleClick);
