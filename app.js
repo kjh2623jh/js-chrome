@@ -78,6 +78,7 @@ const calculator = {
 console.log(calculator.add(1, 2));
 console.log(calculator.power(2, 4));
 
+/*
 // prompt는 더이상 안쓰는 코드이긴 함.
 const age = prompt("How old are you?");
 console.log(parseInt(age)); // string ==> NaN(Not a Number)
@@ -86,3 +87,52 @@ if (isNaN(parseInt(age))) {
 } else {
     console.log("Thank you for writing your age.");
 }
+*/
+
+const title = document.getElementById("title");
+console.dir(title);
+title.innerText = "Got you!";
+console.log(title.id);
+console.log(title.className);
+
+const hellos = document.getElementsByClassName("hello");
+console.log(hellos);
+
+const txt = document.querySelector("div.helloo:first-child h1");
+console.log(txt);
+
+title.style.color = "red";
+
+function handleTitleClick() {
+    console.log("title was clicked");
+}
+
+function handleMouseEnter() {
+    title.innerText = "mouse is here";
+}
+
+function handleMouseLeave() {
+    title.innerText = "mouse is gone";
+}
+
+title.addEventListener("click", handleTitleClick);
+title.addEventListener("mouseenter", handleMouseEnter);
+title.onmouseleave = handleMouseLeave;
+
+function handleWindowResize() {
+    document.body.style.backgroundColor = "tomato";
+}
+function handleWindowCopy() {
+    alert("coopier");
+}
+function handleWindowOffline() {
+    alert("SOS no WiFi");
+}
+function handleWindowOnline() {
+    alert("ALL GOOD");
+}
+
+window.addEventListener("resize", handleWindowResize);
+window.addEventListener("copy", handleWindowCopy);
+window.addEventListener("offline", handleWindowOffline);
+window.addEventListener("online", handleWindowOnline);
