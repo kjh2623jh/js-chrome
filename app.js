@@ -1,136 +1,32 @@
-let a = 5;
+const loginForm = document.querySelector("#login-form")
+const loginInput = document.querySelector("#login-form input");
+const greeting = document.querySelector("#greeting");
 
-console.log(5+2);
-console.log(5*2);
-console.log(5/2);
+const HIDDEN_CLASSNAME = "hidden";
+const USERNAME_KEY = "username";
 
-console.log(a);
-
-a = 3;
-
-console.log(a);
-
-const daysOfWeek = ["mon", "tue", "wed", "thu", "fri", "sat"];
-console.log(daysOfWeek[3]);
-
-daysOfWeek.push("sun")
-
-function sayHello(name, age) {
-    console.log("Hello my name is " + name + " and I'm " + age);
+function onLoginSubmit(event) {
+    event.preventDefault();
+    const username = loginInput.value;
+    localStorage.setItem(USERNAME_KEY, username);
+    loginForm.classList.add(HIDDEN_CLASSNAME);
+    paintGreetings(username);
 }
 
-sayHello("Kim", 10);
-
-/*
-const player = {
-    name: "jihun",
-    sayHello: function(otherPersonsName) {
-        console.log("hello! " + otherPersonsName + " nice to meet you!");
-    }
+function paintGreetings(username) {
+    // greeting.innerText = "Hello " + username;
+    greeting.innerText = `Hello ${username}`;
+    greeting.classList.remove(HIDDEN_CLASSNAME);
 }
 
-player.sayHello("lynn");
-*/
 
-// ?? ; 없어도 잘 작동함.
-const toBuy = ["potato", "tomato", "pizza"]
-console.log(toBuy);
-// const된 toBuy를 건드는 것이 아닌 toBuy의 object를 건드는 것이라 가능함.
-toBuy[2] = "water";
-console.log(toBuy);
-toBuy.push("meat")
-console.log(toBuy);
+const savedUsername = localStorage.getItem(USERNAME_KEY);
 
-
-const player = {
-    name: "kim",
-    age: 10,
-};
-player.name = "ji";
-console.log(player, console);
-player.sexy = "soon";
-console.log(player);
-
-
-function minusFive(potato) {
-    console.log(potato - 5);
-}
-// argument 값이 여러개 들어가도 받을 수 있는 것 까지만 받음.
-minusFive(5, 19, 1, 2, 39, 245, 4657);
-
-const calculator = {
-    add: function(a, b) {
-        return a+b;
-    },
-    sub: function(a, b) {
-        return a-b;
-    },
-    mul: function(a, b) {
-        return a*b;
-    },
-    div: function(a, b) {
-        return a/b;
-    },
-    power: function(a, b) {
-        return a**b;
-    }
-};
-console.log(calculator.add(1, 2));
-console.log(calculator.power(2, 4));
-
-/*
-// prompt는 더이상 안쓰는 코드이긴 함.
-const age = prompt("How old are you?");
-console.log(parseInt(age)); // string ==> NaN(Not a Number)
-if (isNaN(parseInt(age))) {
-    console.log("Please write a number");
+if (savedUsername === null) {
+    // show the form
+    loginForm.classList.remove(HIDDEN_CLASSNAME);
+    loginForm.addEventListener("submit", onLoginSubmit)
 } else {
-    console.log("Thank you for writing your age.");
+    // show the greeting
+    paintGreetings(savedUsername);
 }
-*/
-
-const title = document.getElementById("title");
-console.dir(title);
-title.innerText = "Got you!";
-console.log(title.id);
-console.log(title.className);
-
-const hellos = document.getElementsByClassName("hello");
-console.log(hellos);
-
-const txt = document.querySelector("div.helloo:first-child h1");
-console.log(txt);
-
-title.style.color = "red";
-
-function handleTitleClick() {
-    const currentColor = title.style.color;
-    let newColor;
-    if (currentColor === "blue") {
-        newColor = "tomato";
-    } else {
-        newColor = "blue";
-    }
-    title.style.color = newColor;
-}
-
-title.addEventListener("click", handleTitleClick);
-
-const h1 = document.querySelector(".helloo h1");
-
-function handleH1Click() {
-    const clickClass = "clicked";
-    if (h1.classList.contains(clickClass)) {
-        h1.classList.remove(clickClass)
-    } else {
-        h1.classList.add(clickClass)
-    }
-}
-
-h1.addEventListener("click", handleH1Click);
-
-const coolTitle = document.querySelector(".cool");
-function handleCoolTitleClick() {
-    coolTitle.classList.toggle("clicked")
-}
-coolTitle.addEventListener("click", handleCoolTitleClick);

@@ -1,25 +1,3 @@
-body{
-    background-color: beige;
-}
-
-.helloo h1 {
-    color: cornflowerblue;
-    transition: color .5s ease-in-out;
-}
-
-.helloo .clicked {
-    color: tomato;
-}
-
-.font {
-    font-family:Georgia, 'Times New Roman', Times, serif
-}
-
-.cool {
-    color: azure;
-    transition: color .5s ease-in-out;
-}
-
-.cool.clicked {
-    color: tomato;
+.hidden {
+    display: none;
 }
